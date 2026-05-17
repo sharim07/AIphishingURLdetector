@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PhishGuard — AI Phishing Detector</title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+
+<div class="wrapper">
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo-row">
+      <div class="logo-icon">🛡️</div>
+      <h1>PhishGuard</h1>
+    </div>
+    <p class="tagline">// AI-powered phishing URL detector · powered by Gemini</p>
+  </header>
+
+  <!-- MAIN CARD -->
+  <div class="card">
+
+    <!-- URL INPUT -->
+    <label class="input-label" for="urlInput">› enter url to scan</label>
+    <div class="input-row">
+      <input
+        type="text"
+        id="urlInput"
+        class="url-input"
+        placeholder="https://example.com or paste any suspicious link..."
+        autocomplete="off"
+        spellcheck="false"
+      />
+      <button class="scan-btn" id="scanBtn" onclick="scanURL()">Scan URL</button>
+    </div>
+
+    <!-- API KEY -->
+    <div class="api-section">
+      <label class="input-label" for="apiKey">› gemini api key</label>
+      <div class="api-row">
+        <input
+          type="password"
+          id="apiKey"
+          class="api-input"
+          placeholder="AIza..."
+          autocomplete="off"
+        />
+      </div>
+      <p class="api-hint">
+        Get your free key at <a href="https://aistudio.google.com/app/apikey" target="_blank">aistudio.google.com</a> · key is stored only in your browser session
+      </p>
+    </div>
+
+    <!-- LOADING -->
+    <div id="loading">
+      <div class="scan-animation">
+        <div class="radar"></div>
+        <p class="loading-text">Scanning URL<span class="loading-dots"></span></p>
+      </div>
+    </div>
+
+    <!-- ERROR -->
+    <div id="error"></div>
+
+    <!-- RESULT -->
+    <div id="result">
+
+      <div class="result-header">
+        <div class="verdict-badge" id="verdictBadge">
+          <span class="verdict-dot"></span>
+          <span id="verdictText">—</span>
+        </div>
+        <div style="font-family:var(--mono); font-size:12px; color:var(--muted); word-break:break-all;" id="scannedUrl"></div>
+      </div>
+
+      <!-- RISK METER -->
+      <div class="risk-section">
+        <div class="risk-label-row">
+          <span>Risk Score</span>
+          <span class="risk-score-val" id="riskScoreVal">—</span>
+        </div>
+        <div class="risk-bar-bg">
+          <div class="risk-bar-fill" id="riskBarFill"></div>
+        </div>
+      </div>
+
+      <!-- FLAGS -->
+      <p class="flags-title">› red flags detected</p>
+      <div class="flags-grid" id="flagsGrid"></div>
+
+      <!-- EXPLANATION -->
+      <p class="flags-title">› ai analysis</p>
+      <div class="explanation-box" id="explanationBox"></div>
+
+    </div>
+  </div>
+
+  <!-- SCAN HISTORY -->
+  <div id="history-section">
+    <p class="history-title">› recent scans</p>
+    <div class="history-list" id="historyList"></div>
+  </div>
+
+  <footer>
+    PhishGuard · Built with Gemini AI · For educational purposes only
+  </footer>
+
+</div>
+
+<script src="index.js" defer></script>
+</body>
+</html>
